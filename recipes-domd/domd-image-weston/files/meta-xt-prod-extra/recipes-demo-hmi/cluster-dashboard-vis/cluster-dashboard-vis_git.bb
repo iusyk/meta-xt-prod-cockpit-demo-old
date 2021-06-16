@@ -8,7 +8,8 @@ PV = "1.0+git${SRCPV}"
 S  = "${WORKDIR}/git"
 
 # build-time dependencies
-DEPENDS += "qtquickcontrols2 qtwebsockets qlibwindowmanager"
+DEPENDS += "qtquickcontrols2 qtwebsockets cluster-windowmanager-conf "
+#qlibwindowmanager"
 
 inherit pkgconfig cmake_qt5 aglwgt
 
