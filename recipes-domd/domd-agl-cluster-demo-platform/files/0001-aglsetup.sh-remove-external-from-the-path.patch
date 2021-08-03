@@ -1,0 +1,44 @@
+From ae26d9b6d2b74258b64fc042650e5734fe8ac1ef Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@gmail.com>
+Date: Thu, 29 Jul 2021 16:24:29 +0200
+Subject: [PATCH] aglsetup.sh: remove 'external' from the path
+
+It is necessary to be compatible with other projects.
+Now, the other projects can be used in upper yocto to reuse the funstionality.
+
+Change-Id: I1c8ba96c1596c685a21b4aaf1cf1de5e01847d81
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ scripts/.aglsetup_genconfig.bash | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/scripts/.aglsetup_genconfig.bash b/scripts/.aglsetup_genconfig.bash
+index 323479c3..d98d3a0d 100755
+--- a/scripts/.aglsetup_genconfig.bash
++++ b/scripts/.aglsetup_genconfig.bash
+@@ -409,11 +409,11 @@ function genconfig() {
+ 	# step 1: run usual OE setup to generate conf dir
+ 	export TEMPLATECONF=$(cd $SCRIPTDIR/../templates/base && pwd -P)
+ 	debug "running oe-init-build-env with TEMPLATECONF=$TEMPLATECONF"
+-	info "   Running $METADIR/external/poky/oe-init-build-env"
++	info "   Running $METADIR/poky/oe-init-build-env"
+ 	info "   Templates dir: $TEMPLATECONF"
+ 
+ 	CURDIR=$(pwd -P)
+-	. $METADIR/external/poky/oe-init-build-env $BUILDDIR >/dev/null
++	. $METADIR/poky/oe-init-build-env $BUILDDIR >/dev/null
+ 	cd $CURDIR
+ 
+ 	# step 2: concatenate other remaining fragments coming from base
+@@ -556,7 +556,7 @@ info "OK"
+ infon "Generating setup file: $BUILDDIR/agl-init-build-env ... "
+ 
+ cat <<EOF >$BUILDDIR/agl-init-build-env
+-. $METADIR/external/poky/oe-init-build-env $BUILDDIR
++. $METADIR/poky/oe-init-build-env $BUILDDIR
+ if [ -n "\$DL_DIR" ]; then
+ 	BB_ENV_EXTRAWHITE="\$BB_ENV_EXTRAWHITE DL_DIR"
+ fi
+-- 
+2.17.1
+

@@ -1,0 +1,74 @@
+From 22d8818312b6a97ad471bb7524913bab638a4e42 Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@epam.com>
+Date: Wed, 28 Jul 2021 14:35:43 +0000
+Subject: [PATCH] Remove 'external and 'bsp' sub-folders
+
+It is necessary to have the same layout as prod-devel
+
+Change-Id: I343e72df5ed8639a964db49a9d896731b276f133
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ templates/base/bblayers.conf.sample | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/templates/base/bblayers.conf.sample b/templates/base/bblayers.conf.sample
+index 653f6db..50751dc 100644
+--- a/templates/base/bblayers.conf.sample
++++ b/templates/base/bblayers.conf.sample
+@@ -13,11 +13,11 @@ METADIR  := "${@os.path.abspath('##OEROOT##/../..')}"
+ # These are the core OE + YP Layers
+ #----------------------------------
+ YOCTO_LAYERS = " \
+-  ${METADIR}/external/poky/meta \
+-  ${METADIR}/external/poky/meta-poky \
++  ${METADIR}/poky/meta \
++  ${METADIR}/poky/meta-poky \
+   "
+ #  this is added for the boards where necessary, not globally
+-#  ${METADIR}/external/poky/meta-yocto-bsp \
++#  ${METADIR}/poky/meta-yocto-bsp \
+ #
+ # These are the AGL CORE Layers that make up the basis
+ # - they create a minimal bootable filesystem
+@@ -30,8 +30,8 @@ AGL_CORE_LAYERS = " \
+   "
+ 
+ AGL_APPFW_LAYERS = " \
+-  ${METADIR}/external/meta-security \
+-  ${METADIR}/external/meta-openembedded/meta-perl \
++  ${METADIR}/meta-security \
++  ${METADIR}/meta-openembedded/meta-perl \
+   ${METADIR}/meta-agl/meta-security \
+   ${METADIR}/meta-agl/meta-app-framework \
+     "
+@@ -40,11 +40,11 @@ AGL_APPFW_LAYERS = " \
+ # These are the direct dependencies of the AGL CORE Layers
+ #---------------------------------------------------------
+ AGL_CORE_DEPENDENCY_LAYERS = " \
+-  ${METADIR}/external/meta-openembedded/meta-oe \
+-  ${METADIR}/external/meta-openembedded/meta-multimedia \
+-  ${METADIR}/external/meta-openembedded/meta-networking \
+-  ${METADIR}/external/meta-openembedded/meta-python \
+-  ${METADIR}/external/meta-openembedded/meta-filesystems \
++  ${METADIR}/meta-openembedded/meta-oe \
++  ${METADIR}/meta-openembedded/meta-multimedia \
++  ${METADIR}/meta-openembedded/meta-networking \
++  ${METADIR}/meta-openembedded/meta-python \
++  ${METADIR}/meta-openembedded/meta-filesystems \
+   "
+ 
+ ####################
+@@ -57,8 +57,8 @@ BBLAYERS ?= " \
+   "
+ 
+ BBLAYERS_NON_REMOVABLE ?= " \
+-  ${METADIR}/external/poky/meta \
+-  ${METADIR}/external/poky/meta-poky \
++  ${METADIR}/poky/meta \
++  ${METADIR}/poky/meta-poky \
+   ${METADIR}/meta-agl/meta-agl-profile-core \
+   ${METADIR}/meta-agl/meta-agl-distro \
+   "
+-- 
+2.7.4
+
