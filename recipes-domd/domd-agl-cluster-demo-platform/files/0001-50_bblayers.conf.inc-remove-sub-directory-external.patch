@@ -1,0 +1,27 @@
+From 65ffcacbd1e9a9d0fccbaa7c935b0e288bbd3080 Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@epam.com>
+Date: Thu, 29 Jul 2021 18:03:45 +0200
+Subject: [PATCH] 50_bblayers.conf.inc: remove sub-directory 'external'
+
+To be in consistency with prod-devel structure.
+
+Change-Id: I8ba783fee285d379eb5aa03a859808d90958c2a5
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ .../feature/agl-profile-graphical-qt5/50_bblayers.conf.inc      | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/feature/agl-profile-graphical-qt5/50_bblayers.conf.inc b/templates/feature/agl-profile-graphical-qt5/50_bblayers.conf.inc
+index 96026790..b0ac5bf1 100644
+--- a/templates/feature/agl-profile-graphical-qt5/50_bblayers.conf.inc
++++ b/templates/feature/agl-profile-graphical-qt5/50_bblayers.conf.inc
+@@ -5,5 +5,5 @@ BBLAYERS =+ " \
+ # These are the dependencies
+ #---------------------------
+ BBLAYERS =+ " \
+-   ${METADIR}/external/meta-qt5 \
++   ${METADIR}/meta-qt5 \
+ "
+-- 
+2.17.1
+

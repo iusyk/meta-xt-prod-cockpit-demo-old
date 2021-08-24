@@ -1,0 +1,25 @@
+From ad59444f7674e139592467c96b9504cabe9387ab Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@epam.com>
+Date: Thu, 29 Jul 2021 17:03:13 +0200
+Subject: [PATCH] bblayers.conf.sample: remove sub-directory 'bsp'
+
+It is required to be in consistency with prod-devel to re-use the functionslity.
+
+Change-Id: Ic4ca521ee974dfdc1db16cea47b113d14b414558
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ templates/machine/h3-salvator-x/50_bblayers.conf.inc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/machine/h3-salvator-x/50_bblayers.conf.inc b/templates/machine/h3-salvator-x/50_bblayers.conf.inc
+index 7b0db440..b58989c6 100644
+--- a/templates/machine/h3-salvator-x/50_bblayers.conf.inc
++++ b/templates/machine/h3-salvator-x/50_bblayers.conf.inc
+@@ -1,3 +1,3 @@
+ BBLAYERS =+ "\
+-  ${METADIR}/bsp/meta-renesas-rcar-gen3/meta-rcar-gen3 \
++  ${METADIR}/meta-renesas-rcar-gen3/meta-rcar-gen3 \
+   "
+-- 
+2.17.1
+

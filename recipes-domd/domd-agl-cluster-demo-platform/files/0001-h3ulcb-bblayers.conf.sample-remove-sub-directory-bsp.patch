@@ -1,0 +1,28 @@
+From 017a268149bf8362ca5c9b8349e8fb5ef4c419b6 Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@epam.com>
+Date: Thu, 29 Jul 2021 17:12:24 +0200
+Subject: [PATCH] h3ulcb bblayers.conf.sample: remove sub-directory 'bsp'
+
+It is required to be in consistency with prod-devel to re-use the functionality.
+
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ templates/machine/h3ulcb-4x2g-kf-xt/50_bblayers.conf.inc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/templates/machine/h3ulcb-4x2g-kf-xt/50_bblayers.conf.inc b/templates/machine/h3ulcb-4x2g-kf-xt/50_bblayers.conf.inc
+index b196bc4..ba54fd5 100644
+--- a/templates/machine/h3ulcb-4x2g-kf-xt/50_bblayers.conf.inc
++++ b/templates/machine/h3ulcb-4x2g-kf-xt/50_bblayers.conf.inc
+@@ -1,6 +1,6 @@
+ BBLAYERS =+ "\
+-  ${METADIR}/bsp/meta-renesas-rcar-gen3/meta-rcar-gen3 \
+-  ${METADIR}/bsp/meta-rcar/meta-rcar-gen3-adas \
++  ${METADIR}/meta-renesas-rcar-gen3/meta-rcar-gen3 \
++  ${METADIR}/meta-rcar/meta-rcar-gen3-adas \
+   ${METADIR}/meta-xt-images-rcar-gen3 \
+   ${METADIR}/meta-xt-agl-base \
+   ${METADIR}/meta-aos \
+-- 
+2.17.1
+

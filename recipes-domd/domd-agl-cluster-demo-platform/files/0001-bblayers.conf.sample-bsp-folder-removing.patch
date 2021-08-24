@@ -1,0 +1,27 @@
+From dfd9142ba04cacd23366325fd7f8506d605b08e4 Mon Sep 17 00:00:00 2001
+From: Ihor Usyk <ihor_usyk@epam.com>
+Date: Wed, 28 Jul 2021 15:02:15 +0000
+Subject: [PATCH] bblayers.conf.sample: bsp folder removing
+
+Change-Id: I734cbdad4b1f487857eaa08a157442944ee5a90a
+Signed-off-by: Ihor Usyk <ihor_usyk@epam.com>
+---
+ templates/base/bblayers.conf.sample | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/templates/base/bblayers.conf.sample b/templates/base/bblayers.conf.sample
+index 50751dc..97537f4 100644
+--- a/templates/base/bblayers.conf.sample
++++ b/templates/base/bblayers.conf.sample
+@@ -8,7 +8,7 @@ BBFILES ?= ""
+ # Convenience variables usable in various configuration fragments
+ #----------------------------------
+ BCONFDIR := "${@os.path.abspath(os.path.dirname(d.getVar('FILE', True)))}"
+-METADIR  := "${@os.path.abspath('##OEROOT##/../..')}"
++METADIR  := "${@os.path.abspath('##OEROOT##/..')}"
+ 
+ # These are the core OE + YP Layers
+ #----------------------------------
+-- 
+2.7.4
+
