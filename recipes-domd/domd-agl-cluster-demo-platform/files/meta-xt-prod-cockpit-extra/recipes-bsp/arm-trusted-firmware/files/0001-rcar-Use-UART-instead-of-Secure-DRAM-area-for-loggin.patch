@@ -1,0 +1,53 @@
+From 33aca1e42e7431a78945ae54e638b413a5eb2793 Mon Sep 17 00:00:00 2001
+From: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+Date: Thu, 13 Feb 2020 19:34:21 +0200
+Subject: [PATCH] rcar: Use UART instead of Secure DRAM area for logging in
+ BL31
+
+Signed-off-by: Oleksandr Tyshchenko <oleksandr_tyshchenko@epam.com>
+---
+ plat/renesas/rcar/drivers/scif/scif.S | 10 ++++++++++
+ plat/renesas/rcar/platform.mk         |  2 +-
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/plat/renesas/rcar/drivers/scif/scif.S b/plat/renesas/rcar/drivers/scif/scif.S
+index 4178848..a711998 100644
+--- a/plat/renesas/rcar/drivers/scif/scif.S
++++ b/plat/renesas/rcar/drivers/scif/scif.S
+@@ -102,6 +102,7 @@
+ 
+ 	.globl	console_init
+ 	.globl	console_putc
++	.globl	console_uninit
+ 	.globl	console_core_init
+ 	.globl	console_core_putc
+ 	.globl	console_getc
+@@ -324,3 +325,12 @@ func console_flush
+ 	ret
+ endfunc console_flush
+ 
++	/* -----------------------------------------------
++	 * void console_uninit(void)
++	 * Function to finish the use of console driver.
++	 * -----------------------------------------------
++	 */
++func console_uninit
++	ret
++endfunc console_uninit
++
+diff --git a/plat/renesas/rcar/platform.mk b/plat/renesas/rcar/platform.mk
+index a8b4672..5ddf035 100644
+--- a/plat/renesas/rcar/platform.mk
++++ b/plat/renesas/rcar/platform.mk
+@@ -70,7 +70,7 @@ BL31_SOURCES		+=	${RCAR_GIC_SOURCES}				\
+ 				plat/renesas/rcar/rcar_sip_svc.c		\
+ 				plat/renesas/rcar/drivers/board/board.c		\
+ 				plat/renesas/rcar/drivers/dramconf/dramconf.c	\
+-				plat/renesas/rcar/drivers/memdrv/rcar_console.S	\
++				plat/renesas/rcar/drivers/scif/scif.S		\
+ 				plat/renesas/rcar/drivers/memdrv/rcar_printf.c	\
+ 				plat/renesas/rcar/rcar_topology.c		\
+ 				plat/renesas/rcar/aarch64/rcar_helpers.S	\
+-- 
+2.7.4
+
