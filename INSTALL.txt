@@ -38,7 +38,7 @@ cd build-scripts
 2. In the build-scripts directory you will find a sample configuration
 file gcp-build-server-devel.cfg:
 
-cp gcp-build-server-devel.cfg xt-prod-devel.cfg
+cp gcp-build-server-devel.cfg xt-prod-cockpit-demo.cfg
 
 3. Edit it to fit your environment.
 
@@ -198,32 +198,10 @@ will be just skipped.
 
 6. Run the build script for current stable release:
 
-python ./build_prod.py --build-type dailybuild --machine MACHINE_NAME --product PRODUCT_NAME \
---branch RELEASE_NAME --with-local-conf --config xt-prod-devel.cfg --with-do-build
+python ./build_prod.py --build-type dailybuild --machine h3ulcb-4x2g-kf --product cockpit-demo --branch master --with-local-conf --config xt-prod-cockpit-demo.cfg --with-do-build
 
-Where the PRODUCT_NAME depends on whether "graphics" packages are used or not:
-- devel (to use "graphics" packages)
-- devel-src (to build Graphics DDK from sources)
-
-Where the RELEASE_NAME name is the name of the release to be built.
-This is done in order to track product releases easily and have a possibility to build any release
-just by pointing a proper release name.
-Please note, if "branch" parameter is not set then the current product's snapshot will be built.
-
-Hereafter the supported MACHINE_NAMEs are:
-- salvator-x-h3  (Salvator-X board with H3 ES2.0 SoC installed, 4GB RAM)
-- salvator-x-h3-4x2g (Salvator-X board with H3 ES3.0 SoC installed, 8GB RAM)
-- salvator-x-m3  (Salvator-X board with M3 SoC installed, 4GB RAM)
-- salvator-xs-h3  (Salvator-XS board with H3 ES2.0 SoC installed, 4GB RAM)
-- salvator-xs-h3-4x2g (Salvator-XS board with H3 ES3.0 SoC installed, 8GB RAM)
-- salvator-xs-m3n (Salvator-XS board with M3N SoC installed, 2GB RAM)
-- h3ulcb (H3ULCB board with H3 ES2.0 SoC installed, 4GB RAM)
-- m3ulcb (M3ULCB board with M3 SoC installed, 2GB RAM)
-- h3ulcb-4x2g (H3ULCB board with H3 ES3.0 SoC installed, 8GB RAM)
+Hereafter the supported MACHINE_NAMEs is:
 - h3ulcb-4x2g-kf (H3ULCB KF board with H3 ES3.0 SoC installed, 8GB RAM)
-
-Please note, you are not able to build and run DomA for the m3ulcb and salvator-xs-m3n
-machines due to limited memory resources (only 2GB RAM). The system with DomU is only an option for them.
 
 7. You are done. The artifacts of the build are located at workspace_base directory:
 
