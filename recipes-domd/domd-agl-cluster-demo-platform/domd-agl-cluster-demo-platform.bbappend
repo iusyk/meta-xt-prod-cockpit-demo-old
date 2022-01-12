@@ -2,6 +2,9 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/../../inc:"
 FILESEXTRAPATHS_prepend := "${THISDIR}/../domd-image-weston/files:"
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
 
+SRC_URI_remove = "git://github.com/kraj/meta-clang.git;destsuffix=repo/meta-clang;branch=${BRANCH}"
+SRC_URI_append = "git://github.com/kraj/meta-clang.git;destsuffix=repo/meta-clang;branch=${BRANCH};protocol=https"
+
 ###############################################################################
 # extra layers and files to be put after Yocto's do_unpack into inner builder
 ###############################################################################
